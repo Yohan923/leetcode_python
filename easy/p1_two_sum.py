@@ -5,6 +5,7 @@ You may assume that each input would have exactly one solution, and you may not 
 
 class Solution(object):
 
+    """loop array, find index of target - x if exists. return it if x != y"""
     def two_sums(self, nums, target):
         for x in range(0, len(nums)):
             dif = target - nums[x]
@@ -13,6 +14,7 @@ class Solution(object):
                 if x != y:
                     return [x, y]
 
+    """use dict to store target-num[x] as key and x as value, when value is not None return key and value"""
     def two_sums_other(self, nums, target):
         m = dict()
 

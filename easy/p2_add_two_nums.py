@@ -12,6 +12,7 @@ class ListNode:
 
 
 class Solution:
+
     def add_two_numbers(self, l1, l2):
         carry = 0
         head = ListNode(0)
@@ -52,23 +53,3 @@ class Solution:
             result = result.next
 
         return head.next
-
-def main():
-    print("eee")
-    l1 = ListNode(2)
-    l1.next = ListNode(4)
-    tmp = l1.next
-    tmp.next = ListNode(3)
-
-    l2 = ListNode(5)
-    l2.next = ListNode(6)
-    tmp = l2.next
-    tmp.next = ListNode(4)
-
-    node = Solution().add_two_numbers(l1, l2)
-
-    print("9")
-
-
-if __name__ == '__main__':
-    main()
