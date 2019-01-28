@@ -10,6 +10,7 @@ Input:
  [ 7, 8, 9 ]
 ]
 Output: [1,2,3,6,9,8,7,4,5]
+
 Example 2:
 
 Input:
@@ -55,13 +56,30 @@ class Solution(object):
             c2 -= 1
         return ans
 
+    def spiral_order_draw(self, matrix):
+        if not matrix:
+            return []
 
-def main():
-    t = Solution().spiral_order(
-        [[1, 2, 3, 4, 5], [6, 7, 8, 9, 10], [11, 12, 13, 14, 15], [16, 17, 18, 19, 20], [21, 22, 23, 24, 25],
-         [26, 27, 28, 29, 30]])
-    print(t)
+        rl, cl = len(matrix), len(matrix[0])
 
+        seen = [[False] * cl for _ in matrix]
+        ans = []
 
-if __name__ == '__main__':
-    main()
+        dr = [0, 1, 0, -1]
+        dc = [1, 0, -1, 0]
+
+        r = c = di = 0
+
+        for _ in range(rl * cl):
+            ans.append(matrix[r][c])
+            seen[r][c] = True
+            tmpr, tmpc = r + dr[di], c + dc[di]
+            if 0 <= tmpr < rl and 0 <= tmpc < cl and not seen[tmpr][tmpc]:
+                r = tmpr
+                c = tmpc
+            else:
+                di = (di + 1) % 4
+                r += dr[di]
+                c += dc[di]
+
+        return ans
